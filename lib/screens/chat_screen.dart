@@ -80,10 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         'sender': loggedInUser.email,
                       });
                     },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
-                    ),
+                    child: Icon(Icons.send,color: Colors.lightBlueAccent,),
                   ),
                 ],
               ),
