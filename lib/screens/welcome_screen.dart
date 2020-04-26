@@ -1,11 +1,12 @@
-import 'package:flash_chat/screens/login_screen.dart';
-import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'registration_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static String id = 'welcome_screen';
+  static const String id = 'welcome_screen';
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -19,14 +20,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   void initState() {
     super.initState();
 
-    controller = AnimationController(
-      duration: Duration(seconds: 1),
-      vsync: this,
-    );
-
+    controller =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
     animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
         .animate(controller);
-
     controller.forward();
     controller.addListener(() {
       setState(() {});
@@ -42,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -58,8 +55,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: 60.0,
                   ),
                 ),
-                TyperAnimatedTextKit(
-                  text: ['My Chat App'],
+                TypewriterAnimatedTextKit(
+                  text: ['Flash Chat'],
                   textStyle: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
@@ -71,17 +68,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             RoundedButton(
-                color: Colors.lightBlueAccent,
-                texto: 'Entrar',
-                onChangePage: () {
-                  Navigator.pushNamed(context, LoginScreen.id);
-                }),
+              title: 'Log In',
+              colour: Colors.lightBlueAccent,
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
+            ),
             RoundedButton(
-                color: Colors.blueAccent,
-                texto: 'Registrarse',
-                onChangePage: () {
-                  Navigator.pushNamed(context, RegistrationScreen.id);
-                }),
+              title: 'Register',
+              colour: Colors.blueAccent,
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+            ),
           ],
         ),
       ),
