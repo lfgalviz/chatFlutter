@@ -21,8 +21,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     super.initState();
 
     controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        AnimationController(duration: Duration(seconds: 5), vsync: this);
+    animation = ColorTween(begin: Colors.redAccent, end: Colors.white)
         .animate(controller);
     controller.forward();
     controller.addListener(() {
@@ -47,17 +47,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset('images/logo.png'),
-                    height: 60.0,
-                  ),
+                Container(
+                  child: Image.asset('images/logo.png'),
+                  height: 60.0,
                 ),
-                TypewriterAnimatedTextKit(
-                  text: ['My Chat'],
-                  textStyle: TextStyle(
+                Text(
+                  'My Chat',
+                  style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
                   ),
@@ -71,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               title: 'Entrar',
               colour: Colors.lightBlueAccent,
               onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
+               
               },
             ),
             RoundedButton(
