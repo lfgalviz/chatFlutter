@@ -3,10 +3,12 @@ import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'chat_screen.dart';
+import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+//import 'package:flash_chat/components/screen.dart';
+//import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String id = 'login_screen';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -19,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //final screenState=Provider.of<Screen>(context,listen: true);
     return Scaffold(
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
@@ -29,18 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: Image.asset('images/logo.png'),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
@@ -67,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               RoundedButton(
                 title: 'Entrar',
-                colour: Colors.lightBlueAccent,
+                colour: Colors.redAccent,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
@@ -84,10 +75,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   } catch (e) {
                     print(e);
-                  }
-                },
-              ),
-            ],
+                }
+              },
+            ),
+            RoundedButton(
+              title: 'Registrarse',
+              colour: Colors.black,
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+            ),
+         ],
           ),
         ),
       ),

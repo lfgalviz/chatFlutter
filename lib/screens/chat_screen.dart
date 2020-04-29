@@ -49,8 +49,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 Navigator.pop(context);
               }),
         ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Text('Chat made by: Luis Galviz'),
+        backgroundColor: Colors.redAccent,
       ),
       body: SafeArea(
         child: Column(
@@ -80,7 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         'sender': loggedInUser.email,
                       });
                     },
-                    child: Icon(Icons.send,color: Colors.lightBlueAccent,),
+                    child: Icon(Icons.send,color: Colors.redAccent,),
                   ),
                 ],
               ),
@@ -101,7 +101,7 @@ class MessagesStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Colors.redAccent,
             ),
           );
         }
@@ -167,7 +167,7 @@ class MessageBubble extends StatelessWidget {
                     topRight: Radius.circular(30.0),
                   ),
             elevation: 5.0,
-            color: isMe ? Colors.lightBlueAccent : Colors.white,
+            color: isMe ? Colors.redAccent : Colors.white,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
